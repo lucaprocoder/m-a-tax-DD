@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -310,6 +311,187 @@
     background: var(--border); transition: background 0.2s;
   }
   .footer-dot.on { background: var(--red); }
+
+  /* ── TEMPLATES SECTION ── */
+  .templates-section {
+    padding: 40px 40px 0;
+  }
+  .templates-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .templates-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 4px;
+  }
+  .templates-title {
+    font-size: 18px; font-weight: 600; color: var(--dark);
+  }
+  .templates-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-bottom: 40px;
+  }
+  .template-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+  .template-card:hover {
+    border-color: var(--red-mid);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .template-preview {
+    background: var(--light);
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+    min-height: 180px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .template-preview-inner {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 12px;
+    font-size: 9px;
+    color: var(--mid);
+    line-height: 1.5;
+    pointer-events: none;
+  }
+  .tp-header {
+    background: var(--dark); color: #fff;
+    padding: 5px 8px; margin: -12px -12px 8px;
+    font-size: 8px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .tp-red-bar {
+    width: 30px; height: 2px; background: var(--red); margin-bottom: 6px;
+  }
+  .tp-title { font-size: 10px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .tp-line { height: 5px; background: var(--border); border-radius: 2px; margin-bottom: 3px; }
+  .tp-line.short { width: 60%; }
+  .tp-line.mid { width: 80%; }
+  .tp-table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+  .tp-table td { border: 0.5px solid var(--border); padding: 2px 4px; font-size: 7px; }
+  .tp-table tr:first-child td { background: var(--light); font-weight: 600; }
+  .tp-row { display: flex; gap: 4px; margin-bottom: 3px; }
+  .tp-box { flex: 1; height: 20px; background: var(--light); border: 0.5px solid var(--border); border-radius: 1px; }
+  .tp-expand-btn {
+    position: absolute; bottom: 10px; right: 10px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 3px; padding: 4px 10px;
+    font-size: 10px; color: var(--mid); cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  .tp-expand-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .template-info { padding: 14px 16px; }
+  .template-type {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 3px;
+  }
+  .template-name { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .template-desc { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+  .template-actions { display: flex; gap: 8px; }
+  .btn-preview {
+    flex: 1; padding: 7px 0; text-align: center;
+    background: var(--light); border: 1px solid var(--border);
+    border-radius: 3px; font-size: 11px; font-weight: 500;
+    color: var(--mid); cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  .btn-preview:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .btn-download {
+    flex: 1; padding: 7px 0; text-align: center;
+    background: var(--red); border: 1px solid var(--red);
+    border-radius: 3px; font-size: 11px; font-weight: 500;
+    color: #fff; cursor: pointer;
+    transition: background 0.12s;
+    text-decoration: none; display: block;
+  }
+  .btn-download:hover { background: #b8001a; }
+
+  /* ── MODAL ── */
+  .detail-template-box {
+    margin-top: 20px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .detail-template-header {
+    background: var(--light);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .detail-template-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--red);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .detail-template-label::before {
+    content: ''; display: inline-block;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+  }
+  .detail-template-actions { display: flex; gap: 6px; }
+  .detail-template-btn {
+    padding: 4px 12px; border-radius: 3px; font-size: 11px;
+    font-weight: 500; cursor: pointer; border: 1px solid var(--border);
+    background: var(--white); color: var(--mid);
+    transition: background 0.12s, color 0.12s;
+  }
+  .detail-template-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .detail-template-btn.red { background: var(--red); color: #fff; border-color: var(--red); }
+  .detail-template-btn.red:hover { background: #b8001a; }
+  .detail-template-body { padding: 14px; }
+  .detail-template-name { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 3px; }
+  .detail-template-desc { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 100;
+    align-items: center; justify-content: center;
+    padding: 40px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white); border-radius: 6px;
+    width: 100%; max-width: 720px; max-height: 80vh;
+    overflow-y: auto;
+    animation: fadeIn 0.2s ease;
+  }
+  .modal-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; background: var(--white); z-index: 1;
+  }
+  .modal-title { font-size: 15px; font-weight: 600; color: var(--dark); }
+  .modal-close {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--light); border: none; cursor: pointer;
+    font-size: 16px; color: var(--mid); display: flex;
+    align-items: center; justify-content: center;
+    transition: background 0.12s;
+  }
+  .modal-close:hover { background: var(--border); }
+  .modal-body { padding: 24px; }
+  .modal-placeholder {
+    background: var(--light); border: 1.5px dashed var(--border);
+    border-radius: 4px; padding: 40px; text-align: center;
+    color: var(--muted); font-size: 13px; line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .modal-placeholder strong { color: var(--dark); display: block; font-size: 15px; margin-bottom: 6px; }
+  .modal-note {
+    font-size: 11.5px; color: var(--muted); line-height: 1.6;
+    background: var(--light); border-left: 3px solid var(--red);
+    padding: 10px 14px; border-radius: 0 4px 4px 0;
+  }
 </style>
 </head>
 <body>
@@ -366,6 +548,17 @@
   </div>
 </div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <div class="footer">
   <div class="footer-left">Henkel AG &amp; Co. KGaA · Tax Function · Vertraulich</div>
@@ -399,7 +592,8 @@ const phases = [
           { label: "Fee proposal", sub: "Fixed fee vs. time & materials" },
           { label: "Engagement letter", sub: "Sign-off and mandate" }
         ],
-        tags: ["Advisors", "RFP", "Engagement"]
+        tags: ["Advisors", "RFP", "Engagement"],
+        template: "rfp"
       },
       {
         name: "Kick-Off Meeting",
@@ -469,7 +663,8 @@ const phases = [
           { label: "Open items", sub: "Outstanding data requests" },
           { label: "Next steps", sub: "Focus areas going forward" }
         ],
-        tags: ["Flash Update", "Interim", "All Workstreams"]
+        tags: ["Flash Update", "Interim", "All Workstreams"],
+        template: "flash"
       },
       {
         name: "Flash Update 2",
@@ -481,7 +676,8 @@ const phases = [
           { label: "Post-expert call items", sub: "Clarifications received" },
           { label: "Quantification update", sub: "Initial exposure estimates" }
         ],
-        tags: ["Flash Update", "Interim", "Risk Refinement"]
+        tags: ["Flash Update", "Interim", "Risk Refinement"],
+        template: "flash"
       },
       {
         name: "Preliminary DD Executive Summary",
@@ -493,7 +689,8 @@ const phases = [
           { label: "Flash Update 3 (optional)", sub: "If timeline requires" },
           { label: "SPA input preview", sub: "Key items for contract" }
         ],
-        tags: ["Preliminary Report", "Risk Summary", "Executive Summary"]
+        tags: ["Preliminary Report", "Risk Summary", "Executive Summary"],
+        template: "exec"
       }
     ]
   },
@@ -522,7 +719,8 @@ const phases = [
           { label: "Final risk quantification", sub: "Best / base / worst case" },
           { label: "Deal recommendations", sub: "Structure, price, protections" }
         ],
-        tags: ["Final Report", "Full DD", "Advisor Reports"]
+        tags: ["Final Report", "Full DD", "Advisor Reports"],
+        template: "exec"
       },
       {
         name: "DD Review — InvestCom / MBM",
@@ -654,6 +852,21 @@ function renderDetail() {
     <div class="detail-divider"></div>
     <div class="detail-section-label" style="margin-bottom:10px">Tags</div>
     ${s.tags.map(t => `<span class="detail-flag"><span class="detail-flag-dot"></span>${t}</span>`).join('')}
+    ${s.template ? `
+    <div class="detail-divider"></div>
+    <div class="detail-template-box">
+      <div class="detail-template-header">
+        <div class="detail-template-label">Template verfügbar</div>
+        <div class="detail-template-actions">
+          <div class="detail-template-btn" onclick="openModal('${s.template}')">Vorschau</div>
+          <div class="detail-template-btn red">↓ Download</div>
+        </div>
+      </div>
+      <div class="detail-template-body">
+        <div class="detail-template-name">${templateContent['${s.template}'] ? '' : ''}${s.template === 'flash' ? 'Flash Update (1-Pager)' : s.template === 'exec' ? 'DD Executive Summary' : 'RFP — Advisor Briefing'}</div>
+        <div class="detail-template-desc">${s.template === 'flash' ? 'Kompakte Zwischenübersicht der wichtigsten DD-Findings für das Deal Team.' : s.template === 'exec' ? 'Abschlussbericht mit Risk Summary Table, quantifizierten Exposures und SPA-Empfehlungen.' : 'Standardvorlage für die Anfrage an externe Steuerberater.'}</div>
+      </div>
+    </div>` : ''}
   `;
 }
 
@@ -672,6 +885,43 @@ function update() {
   renderSteps();
   renderDetail();
   renderFooter();
+}
+
+const templateContent = {
+  flash: {
+    title: "Flash Update (1-Pager)",
+    body: `
+      <div class="modal-note">
+        <strong>Verwendung:</strong> Wird nach Phase 01 (erste Findings) und Phase 02 (aktualisierte Findings) an das Deal Team verschickt. Format: 1-Pager, max. eine Seite, mit Risk Summary und Open Items.
+      </div>`
+  },
+  exec: {
+    title: "DD Executive Summary",
+    body: `
+      <div class="modal-note">
+        <strong>Verwendung:</strong> Finaler Abschlussbericht mit vollständiger Risk Summary Table, quantifizierten Steuerrisiken (Best / Base / Worst Case) und konkreten Empfehlungen für SPA-Klauseln. Wird vor dem InvestCom / MBM eingereicht.
+      </div>`
+  },
+  rfp: {
+    title: "RFP — Advisor Briefing",
+    body: `
+      <div class="modal-note">
+        <strong>Verwendung:</strong> Wird zu Beginn des Prozesses an externe Steuerberater verschickt. Enthält Deal-Kontext, gewünschten Scope, betroffene Jurisdiktionen, Timeline und Anforderungen an Format und Deliverables.
+      </div>`
+  }
+};
+
+function openModal(type) {
+  const t = templateContent[type];
+  document.getElementById('modalTitle').textContent = t.title;
+  document.getElementById('modalBody').innerHTML = t.body;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
 }
 
 init();
