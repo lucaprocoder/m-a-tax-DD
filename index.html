@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M&A Tax Due Diligence — Henkel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600&display=swap');
+
+  :root {
+    --red: #E2001A;
+    --red-light: #fdf0f2;
+    --red-mid: #f5c6cc;
+    --dark: #1a1a1a;
+    --mid: #555;
+    --muted: #888;
+    --light: #f4f4f2;
+    --white: #ffffff;
+    --border: #e0e0dd;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 20px; }
+  .henkel-badge {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .henkel-oval {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 2px solid var(--red);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .henkel-oval span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 600; color: var(--red); letter-spacing: 0.04em;
+  }
+  .topbar-divider { width: 1px; height: 28px; background: var(--border); }
+  .topbar-title { font-size: 13px; font-weight: 500; color: var(--mid); letter-spacing: 0.04em; }
+  .topbar-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .topbar-right { font-size: 11px; color: var(--muted); }
+  .topbar-right span { color: var(--red); font-weight: 500; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 40px 28px;
+  }
+  .hero-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 6px;
+  }
+  .hero-title {
+    font-size: 30px; font-weight: 300; color: var(--dark);
+    letter-spacing: -0.01em; line-height: 1.15;
+  }
+  .hero-title strong { font-weight: 600; }
+  .hero-meta {
+    margin-top: 10px; font-size: 12px; color: var(--muted);
+    display: flex; gap: 20px; align-items: center;
+  }
+  .hero-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
+
+  /* ── PHASE RAIL ── */
+  .phase-rail {
+    display: flex;
+    padding: 24px 40px 0;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .phase-tab {
+    flex: 1;
+    min-width: 140px;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    border-right: none;
+    background: var(--white);
+    padding: 16px 18px 14px;
+    transition: background 0.15s, border-color 0.15s;
+    user-select: none;
+  }
+  .phase-tab:first-child { border-radius: 4px 0 0 0; }
+  .phase-tab:last-child { border-right: 1px solid var(--border); border-radius: 0 4px 0 0; }
+  .phase-tab:hover { background: var(--light); }
+  .phase-tab.active {
+    background: var(--dark);
+    border-color: var(--dark);
+    z-index: 1;
+  }
+  .phase-tab.active + .phase-tab { border-left-color: var(--dark); }
+
+  .phase-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--muted); margin-bottom: 5px;
+    transition: color 0.15s;
+  }
+  .phase-tab.active .phase-num { color: rgba(255,255,255,0.45); }
+
+  .phase-name {
+    font-size: 12.5px; font-weight: 500; color: var(--dark);
+    line-height: 1.3; transition: color 0.15s;
+  }
+  .phase-tab.active .phase-name { color: #fff; }
+
+  .phase-count {
+    margin-top: 8px; font-size: 10px; color: var(--muted);
+    transition: color 0.15s;
+  }
+  .phase-tab.active .phase-count { color: rgba(255,255,255,0.4); }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    display: flex;
+    gap: 0;
+    padding: 0 40px 40px;
+    align-items: flex-start;
+  }
+
+  /* ── STEPS PANEL ── */
+  .steps-panel {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 0 4px;
+  }
+
+  .steps-header {
+    padding: 14px 18px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .steps-header-bar { width: 3px; height: 14px; background: var(--red); border-radius: 2px; }
+  .steps-header-text { font-size: 11px; font-weight: 600; color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 18px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+    position: relative;
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-item:hover { background: var(--light); }
+  .step-item.active {
+    background: var(--red-light);
+    border-left: 3px solid var(--red);
+    padding-left: 15px;
+  }
+
+  .step-icon {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--light); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: var(--muted);
+    transition: background 0.12s, color 0.12s;
+    margin-top: 1px;
+  }
+  .step-item.active .step-icon { background: var(--red); color: #fff; }
+
+  .step-text {
+    font-size: 13px; color: var(--mid); line-height: 1.4;
+    transition: color 0.12s;
+  }
+  .step-item.active .step-text { color: var(--dark); font-weight: 500; }
+
+  .step-arrow {
+    margin-left: auto; color: var(--border); font-size: 14px;
+    transition: color 0.12s;
+  }
+  .step-item.active .step-arrow { color: var(--red); }
+  .step-item:hover .step-arrow { color: var(--muted); }
+
+  /* ── DETAIL PANEL ── */
+  .detail-panel {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-left: none;
+    border-radius: 0 0 4px 0;
+    min-height: 420px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .detail-empty {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    height: 420px;
+    color: var(--muted); font-size: 13px; gap: 10px;
+  }
+  .detail-empty-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1.5px dashed var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: var(--border);
+  }
+
+  .detail-content { padding: 28px 32px; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform: translateY(0); } }
+
+  .detail-breadcrumb {
+    font-size: 11px; color: var(--muted); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .detail-breadcrumb .sep { color: var(--border); }
+  .detail-breadcrumb .phase-crumb { color: var(--red); font-weight: 500; }
+
+  .detail-title {
+    font-size: 20px; font-weight: 600; color: var(--dark);
+    margin-bottom: 10px; line-height: 1.25;
+  }
+
+  .detail-desc {
+    font-size: 13.5px; color: var(--mid); line-height: 1.7;
+    margin-bottom: 24px; max-width: 560px;
+  }
+
+  .detail-section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+  }
+
+  .detail-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; max-width: 560px;
+  }
+
+  .detail-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+    transition: border-color 0.12s;
+  }
+  .detail-card:hover { border-color: var(--red-mid); }
+
+  .detail-card-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 600; color: var(--red);
+    letter-spacing: 0.08em; margin-bottom: 3px;
+  }
+  .detail-card-text {
+    font-size: 13px; color: var(--dark); font-weight: 500;
+  }
+  .detail-card-sub {
+    font-size: 11.5px; color: var(--muted); margin-top: 2px; line-height: 1.4;
+  }
+
+  .detail-divider {
+    height: 1px; background: var(--border); margin: 24px 0;
+  }
+
+  .detail-flag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--muted);
+    background: var(--light); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 12px;
+    margin-right: 6px; margin-bottom: 6px;
+  }
+  .detail-flag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar {
+    height: 3px; background: var(--border); margin-bottom: 0;
+    position: relative; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--red);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--border);
+    background: var(--white);
+  }
+  .footer-left { font-size: 11px; color: var(--muted); }
+  .footer-phases { display: flex; gap: 4px; }
+  .footer-dot {
+    width: 20px; height: 4px; border-radius: 2px;
+    background: var(--border); transition: background 0.2s;
+  }
+  .footer-dot.on { background: var(--red); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="henkel-badge">
+      <div class="henkel-oval"><span>Henkel</span></div>
+    </div>
+    <div class="topbar-divider"></div>
+    <div>
+      <div class="topbar-title">M&A Tax Due Diligence</div>
+      <div class="topbar-sub">Process Overview — Internal Use</div>
+    </div>
+  </div>
+  <div class="topbar-right">5 phases &nbsp;·&nbsp; <span>15 steps</span></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Tax Function · M&A</div>
+  <div class="hero-title">Due Diligence <strong>Process Map</strong></div>
+  <div class="hero-meta">
+    <span>Select a phase to explore the steps</span>
+    <div class="hero-meta-dot"></div>
+    <span>Click on any step for detailed information</span>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill" style="width:0%"></div>
+</div>
+
+<!-- PHASE RAIL -->
+<div class="phase-rail" id="phaseRail"></div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="steps-panel" id="stepsPanel">
+    <div class="steps-header">
+      <div class="steps-header-bar"></div>
+      <div class="steps-header-text">Steps</div>
+    </div>
+    <div id="stepsList"></div>
+  </div>
+  <div class="detail-panel" id="detailPanel">
+    <div class="detail-empty" id="detailEmpty">
+      <div class="detail-empty-icon">→</div>
+      <span>Wähle eine Phase und einen Step aus</span>
+    </div>
+    <div class="detail-content" id="detailContent" style="display:none"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Henkel AG &amp; Co. KGaA · Tax Function · Vertraulich</div>
+  <div class="footer-phases" id="footerDots"></div>
+</div>
+
+<script>
+const phases = [
+  {
+    num: "01", name: "Preparation & Scoping",
+    steps: [
+      {
+        name: "Engagement Setup",
+        title: "Engagement Setup & Team Alignment",
+        desc: "Define the scope, objectives and timeline of the tax due diligence. Establish workstreams, assign responsibilities and align with the M&A transaction team on key milestones and deliverables.",
+        keys: [
+          { label: "Scope definition", sub: "Jurisdictions, tax types, period" },
+          { label: "Timeline & milestones", sub: "Key dates, sign-off schedule" },
+          { label: "Team allocation", sub: "Internal & external advisors" },
+          { label: "Fee arrangement", sub: "Budget & billing structure" }
+        ],
+        tags: ["Kick-off", "Governance", "Planning"]
+      },
+      {
+        name: "NDA & Data Room Access",
+        title: "NDA Execution & Data Room Onboarding",
+        desc: "Ensure confidentiality agreements are signed by all relevant parties and obtain access to the virtual data room. Coordinate with target's management on document availability and key contact persons.",
+        keys: [
+          { label: "NDA review", sub: "Scope, carve-outs, duration" },
+          { label: "VDR onboarding", sub: "Access rights, index review" },
+          { label: "Document index", sub: "Priority list of required docs" },
+          { label: "Management contacts", sub: "CFO, Tax Director, GC" }
+        ],
+        tags: ["Legal", "Data Room", "Confidentiality"]
+      },
+      {
+        name: "Initial Risk Assessment",
+        title: "Preliminary Tax Risk Assessment",
+        desc: "Conduct a high-level review of the target's tax profile, industry-specific risks and jurisdiction footprint to prioritize areas of focus for the detailed analysis phase.",
+        keys: [
+          { label: "Industry risk flags", sub: "Sector-specific exposures" },
+          { label: "Jurisdiction map", sub: "Countries, treaty positions" },
+          { label: "Tax profile overview", sub: "Size, complexity, history" },
+          { label: "Priority areas", sub: "Focus areas for deep dive" }
+        ],
+        tags: ["Risk", "Prioritization", "Strategy"]
+      }
+    ]
+  },
+  {
+    num: "02", name: "Tax Structure Analysis",
+    steps: [
+      {
+        name: "Legal Entity Mapping",
+        title: "Legal Entity & Ownership Structure",
+        desc: "Map the complete legal entity structure of the target group, including holding companies, intermediate entities and their tax residences. Identify any hybrid structures or mismatches.",
+        keys: [
+          { label: "Group structure chart", sub: "Full ownership chain" },
+          { label: "Tax residences", sub: "Jurisdiction of each entity" },
+          { label: "Hybrid entities", sub: "Mismatches, transparent entities" },
+          { label: "Minority interests", sub: "Third-party shareholders" }
+        ],
+        tags: ["Structure", "Entities", "Tax Residence"]
+      },
+      {
+        name: "Historic Tax Returns",
+        title: "Review of Historic Tax Filings",
+        desc: "Analyze corporate income tax returns for the last 3–5 years to identify patterns, filing positions taken, loss carryforwards, and any deviations from GAAP or local tax rules.",
+        keys: [
+          { label: "CIT returns (3–5y)", sub: "Completeness & consistency" },
+          { label: "Loss carryforwards", sub: "Amount, expiry, usability" },
+          { label: "Filing positions", sub: "Aggressive or unusual items" },
+          { label: "Tax vs. GAAP diff.", sub: "Reconciliation items" }
+        ],
+        tags: ["Compliance", "Historic", "Filings"]
+      },
+      {
+        name: "Transfer Pricing Review",
+        title: "Transfer Pricing Compliance",
+        desc: "Assess intercompany transactions and whether they are priced at arm's length. Review existing TP documentation, master file / local file status and any APAs or MAPs in place.",
+        keys: [
+          { label: "IC transactions", sub: "Goods, services, IP, loans" },
+          { label: "TP documentation", sub: "Master file / local file" },
+          { label: "APA / MAP status", sub: "Advance agreements, disputes" },
+          { label: "Benchmark analysis", sub: "Arm's length ranges" }
+        ],
+        tags: ["Transfer Pricing", "BEPS", "Intercompany"]
+      }
+    ]
+  },
+  {
+    num: "03", name: "Risk Identification",
+    steps: [
+      {
+        name: "Open Tax Audits",
+        title: "Open Tax Audits & Disputes",
+        desc: "Identify all ongoing or recently completed tax audits, litigation and disputes. Assess potential financial exposure and likelihood of adverse outcome for each open matter.",
+        keys: [
+          { label: "Audit inventory", sub: "Open & recent audits" },
+          { label: "Dispute exposure", sub: "Quantified risk per matter" },
+          { label: "Statute of limitations", sub: "Open years per jurisdiction" },
+          { label: "Provision adequacy", sub: "Vs. estimated exposure" }
+        ],
+        tags: ["Audit", "Litigation", "Exposure"]
+      },
+      {
+        name: "Tax Contingencies",
+        title: "Tax Contingencies & Provisions",
+        desc: "Review tax accruals and contingent liabilities in the financial statements. Assess whether provisions are sufficient or whether additional exposure exists based on DD findings.",
+        keys: [
+          { label: "Balance sheet review", sub: "Tax payables & accruals" },
+          { label: "IAS 12 / ASC 740", sub: "Deferred tax positions" },
+          { label: "Unrecognized items", sub: "Off-balance exposures" },
+          { label: "Contingent liabilities", sub: "UTP, FIN 48 positions" }
+        ],
+        tags: ["Contingencies", "IAS 12", "Financial Statements"]
+      },
+      {
+        name: "Structural Tax Risks",
+        title: "Structural & Transactional Tax Risks",
+        desc: "Assess risks arising from the current group structure, past reorganizations, step-up elections and any tax-driven transactions that could be challenged post-closing.",
+        keys: [
+          { label: "Past restructurings", sub: "Mergers, demergers, migrations" },
+          { label: "Step-up elections", sub: "Asset basis vs. book value" },
+          { label: "Anti-avoidance rules", sub: "GAAR, SAAR exposures" },
+          { label: "BEPS exposure", sub: "Pillar Two, CbCR compliance" }
+        ],
+        tags: ["Structure Risk", "Anti-Avoidance", "BEPS"]
+      }
+    ]
+  },
+  {
+    num: "04", name: "Quantification",
+    steps: [
+      {
+        name: "Exposure Modeling",
+        title: "Tax Exposure Modeling & Scenario Analysis",
+        desc: "Quantify identified tax risks using base, downside and upside scenarios. Model the financial impact on EBITDA, cash taxes and effective tax rate to support purchase price negotiations.",
+        keys: [
+          { label: "Base / downside / upside", sub: "Three-scenario approach" },
+          { label: "Cash tax impact", sub: "Expected payments & timing" },
+          { label: "ETR bridge", sub: "Effective tax rate analysis" },
+          { label: "P&L / balance sheet", sub: "Impact on financials" }
+        ],
+        tags: ["Modeling", "Scenarios", "Valuation"]
+      },
+      {
+        name: "Tax Attributes",
+        title: "Tax Attributes & Value Drivers",
+        desc: "Identify and quantify favorable tax attributes such as loss carryforwards, tax credits, step-ups and other deferred tax assets that may create value for the acquirer.",
+        keys: [
+          { label: "NOL carryforwards", sub: "Amount, expiry, usability" },
+          { label: "Tax credits", sub: "R&D, investment, other" },
+          { label: "Deferred tax assets", sub: "Recognition & recoverability" },
+          { label: "Step-up potential", sub: "Asset deal vs. share deal" }
+        ],
+        tags: ["Value Creation", "DTAs", "Tax Attributes"]
+      },
+      {
+        name: "W&I Insurability",
+        title: "W&I Insurance Scope",
+        desc: "Assess which tax risks may be insurable under a Warranty & Indemnity insurance policy and coordinate with the M&A team on coverage scope, exclusions and escrow requirements.",
+        keys: [
+          { label: "W&I scope", sub: "Coverable risks" },
+          { label: "Known exclusions", sub: "DD-identified carve-outs" },
+          { label: "Escrow sizing", sub: "Retention for uninsured risk" },
+          { label: "Insurer coordination", sub: "Underwriter Q&A process" }
+        ],
+        tags: ["W&I", "Insurance", "Risk Transfer"]
+      }
+    ]
+  },
+  {
+    num: "05", name: "Reporting",
+    steps: [
+      {
+        name: "Red Flag Report",
+        title: "Red Flag / Preliminary Report",
+        desc: "Issue a concise red flag report highlighting the most material findings early in the process to support deal team decision-making and to flag any potential deal-breakers.",
+        keys: [
+          { label: "Deal-breaker items", sub: "Critical blockers" },
+          { label: "Top 5 risks", sub: "Prioritized by exposure" },
+          { label: "Management action", sub: "Immediate decisions needed" },
+          { label: "Timeline implications", sub: "Impact on signing date" }
+        ],
+        tags: ["Report", "Early Alert", "Management"]
+      },
+      {
+        name: "Full DD Report",
+        title: "Full Tax Due Diligence Report",
+        desc: "Deliver a comprehensive written report covering all analyzed areas, quantified exposures, structural observations and recommendations for SPA protection mechanisms.",
+        keys: [
+          { label: "Structured findings", sub: "By area & jurisdiction" },
+          { label: "Quantified exposure", sub: "Best / worst / base case" },
+          { label: "SPA recommendations", sub: "Indemnities, warranties" },
+          { label: "Executive summary", sub: "C-suite ready overview" }
+        ],
+        tags: ["Full Report", "SPA Input", "Documentation"]
+      },
+      {
+        name: "SPA Support",
+        title: "SPA Tax Clauses & Negotiation Support",
+        desc: "Provide specific input on tax indemnities, warranties, tax covenant, locked-box adjustments and closing conditions. Support negotiations with target's advisors as needed.",
+        keys: [
+          { label: "Tax indemnity", sub: "Scope, cap, basket" },
+          { label: "Tax warranties", sub: "Specific & general" },
+          { label: "Locked-box adj.", sub: "Tax leakage items" },
+          { label: "Closing conditions", sub: "Tax-related CPs" }
+        ],
+        tags: ["SPA", "Negotiation", "Legal"]
+      }
+    ]
+  }
+];
+
+let activePhase = 0;
+let activeStep = 0;
+
+function init() {
+  renderPhases();
+  renderSteps();
+  renderDetail();
+  renderFooter();
+}
+
+function renderPhases() {
+  const rail = document.getElementById('phaseRail');
+  rail.innerHTML = '';
+  phases.forEach((p, pi) => {
+    const el = document.createElement('div');
+    el.className = 'phase-tab' + (pi === activePhase ? ' active' : '');
+    el.innerHTML = `<div class="phase-num">${p.num}</div><div class="phase-name">${p.name}</div><div class="phase-count">${p.steps.length} steps</div>`;
+    el.onclick = () => { activePhase = pi; activeStep = 0; update(); };
+    rail.appendChild(el);
+  });
+  const pct = ((activePhase + 1) / phases.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function renderSteps() {
+  const list = document.getElementById('stepsList');
+  list.innerHTML = '';
+  const p = phases[activePhase];
+  p.steps.forEach((s, si) => {
+    const el = document.createElement('div');
+    el.className = 'step-item' + (si === activeStep ? ' active' : '');
+    el.innerHTML = `
+      <div class="step-icon">${String(si + 1).padStart(2, '0')}</div>
+      <div class="step-text">${s.name}</div>
+      <div class="step-arrow">›</div>
+    `;
+    el.onclick = () => { activeStep = si; update(); };
+    list.appendChild(el);
+  });
+}
+
+function renderDetail() {
+  const empty = document.getElementById('detailEmpty');
+  const content = document.getElementById('detailContent');
+  const s = phases[activePhase].steps[activeStep];
+  const p = phases[activePhase];
+
+  empty.style.display = 'none';
+  content.style.display = 'block';
+
+  content.innerHTML = `
+    <div class="detail-breadcrumb">
+      <span>M&A Tax DD</span>
+      <span class="sep">/</span>
+      <span class="phase-crumb">${p.name}</span>
+      <span class="sep">/</span>
+      <span>${s.name}</span>
+    </div>
+    <div class="detail-title">${s.title}</div>
+    <div class="detail-desc">${s.desc}</div>
+    <div class="detail-section-label">Key Items</div>
+    <div class="detail-cards">
+      ${s.keys.map((k, ki) => `
+        <div class="detail-card">
+          <div class="detail-card-num">ITEM ${String(ki + 1).padStart(2, '0')}</div>
+          <div class="detail-card-text">${k.label}</div>
+          <div class="detail-card-sub">${k.sub}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-section-label" style="margin-bottom:10px">Tags</div>
+    ${s.tags.map(t => `<span class="detail-flag"><span class="detail-flag-dot"></span>${t}</span>`).join('')}
+  `;
+}
+
+function renderFooter() {
+  const dots = document.getElementById('footerDots');
+  dots.innerHTML = '';
+  phases.forEach((_, pi) => {
+    const d = document.createElement('div');
+    d.className = 'footer-dot' + (pi === activePhase ? ' on' : '');
+    dots.appendChild(d);
+  });
+}
+
+function update() {
+  renderPhases();
+  renderSteps();
+  renderDetail();
+  renderFooter();
+}
+
+init();
+</script>
+</body>
+</html>
