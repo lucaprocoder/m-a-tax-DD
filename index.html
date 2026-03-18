@@ -326,7 +326,7 @@
       <div class="topbar-sub">Process Overview — Internal Use</div>
     </div>
   </div>
-  <div class="topbar-right">5 phases &nbsp;·&nbsp; <span>15 steps</span></div>
+  <div class="topbar-right">5 phases &nbsp;·&nbsp; <span>15 steps</span> &nbsp;·&nbsp; Pre-DD → Integration</div>
 </div>
 
 <!-- HERO -->
@@ -375,207 +375,207 @@
 <script>
 const phases = [
   {
-    num: "01", name: "Preparation & Scoping",
+    num: "00", name: "Pre-DD / Deal Initiation",
     steps: [
       {
-        name: "Engagement Setup",
-        title: "Engagement Setup & Team Alignment",
-        desc: "Define the scope, objectives and timeline of the tax due diligence. Establish workstreams, assign responsibilities and align with the M&A transaction team on key milestones and deliverables.",
+        name: "Pre-Information (Deal Team)",
+        title: "Pre-Information from Deal Team",
+        desc: "Initial briefing by the deal team on the target company, strategic rationale and deal structure. This step is sometimes skipped depending on deal timeline and internal process. May include a GO2-Presentation and / or a Non-Binding Offer (NBO) / Letter of Intent (LOI).",
         keys: [
-          { label: "Scope definition", sub: "Jurisdictions, tax types, period" },
-          { label: "Timeline & milestones", sub: "Key dates, sign-off schedule" },
-          { label: "Team allocation", sub: "Internal & external advisors" },
-          { label: "Fee arrangement", sub: "Budget & billing structure" }
+          { label: "Deal team briefing", sub: "Target overview, strategic fit" },
+          { label: "GO2-Presentation", sub: "Internal go/no-go decision" },
+          { label: "NBO / LOI", sub: "Non-binding offer or Letter of Intent" },
+          { label: "Deal structure overview", sub: "Share deal vs. asset deal" }
         ],
-        tags: ["Kick-off", "Governance", "Planning"]
+        tags: ["Optional", "Deal Initiation", "NBO", "LOI"]
       },
       {
-        name: "NDA & Data Room Access",
-        title: "NDA Execution & Data Room Onboarding",
-        desc: "Ensure confidentiality agreements are signed by all relevant parties and obtain access to the virtual data room. Coordinate with target's management on document availability and key contact persons.",
+        name: "RFP to Advisors",
+        title: "Request for Proposal to External Advisors",
+        desc: "Issue a Request for Proposal (RFP) to external tax advisors to scope the due diligence engagement, agree on fees and define the workstreams to be covered. May be combined with or follow the Kick-Off Meeting.",
         keys: [
-          { label: "NDA review", sub: "Scope, carve-outs, duration" },
-          { label: "VDR onboarding", sub: "Access rights, index review" },
-          { label: "Document index", sub: "Priority list of required docs" },
-          { label: "Management contacts", sub: "CFO, Tax Director, GC" }
+          { label: "Advisor selection", sub: "Tax, legal, financial advisors" },
+          { label: "Scope of work", sub: "Jurisdictions, tax types covered" },
+          { label: "Fee proposal", sub: "Fixed fee vs. time & materials" },
+          { label: "Engagement letter", sub: "Sign-off and mandate" }
         ],
-        tags: ["Legal", "Data Room", "Confidentiality"]
+        tags: ["Advisors", "RFP", "Engagement"]
       },
       {
-        name: "Initial Risk Assessment",
-        title: "Preliminary Tax Risk Assessment",
-        desc: "Conduct a high-level review of the target's tax profile, industry-specific risks and jurisdiction footprint to prioritize areas of focus for the detailed analysis phase.",
+        name: "Kick-Off Meeting",
+        title: "Kick-Off Meeting — All Workstreams",
+        desc: "Formal kick-off meeting with all workstreams including Tax and Trade. Align on deal timeline, responsibilities, key milestones and communication protocols between internal teams and external advisors.",
         keys: [
-          { label: "Industry risk flags", sub: "Sector-specific exposures" },
-          { label: "Jurisdiction map", sub: "Countries, treaty positions" },
-          { label: "Tax profile overview", sub: "Size, complexity, history" },
-          { label: "Priority areas", sub: "Focus areas for deep dive" }
+          { label: "All workstreams", sub: "Tax, Legal, Finance, Trade" },
+          { label: "Timeline alignment", sub: "Key dates & deliverables" },
+          { label: "Roles & responsibilities", sub: "RACI across workstreams" },
+          { label: "Communication protocols", sub: "Escalation & reporting" }
         ],
-        tags: ["Risk", "Prioritization", "Strategy"]
+        tags: ["Kick-Off", "All Workstreams", "Governance"]
       }
     ]
   },
   {
-    num: "02", name: "Tax Structure Analysis",
+    num: "01", name: "Data Room & Analysis",
     steps: [
       {
-        name: "Legal Entity Mapping",
-        title: "Legal Entity & Ownership Structure",
-        desc: "Map the complete legal entity structure of the target group, including holding companies, intermediate entities and their tax residences. Identify any hybrid structures or mismatches.",
+        name: "Data Room Opening",
+        title: "Virtual Data Room Opening",
+        desc: "The sell-side opens the virtual data room (VDR) granting access to the buy-side advisors. Review the document index, identify gaps and request missing information from the target.",
         keys: [
-          { label: "Group structure chart", sub: "Full ownership chain" },
-          { label: "Tax residences", sub: "Jurisdiction of each entity" },
-          { label: "Hybrid entities", sub: "Mismatches, transparent entities" },
-          { label: "Minority interests", sub: "Third-party shareholders" }
+          { label: "VDR access", sub: "Login, access rights granted" },
+          { label: "Document index review", sub: "Completeness check" },
+          { label: "Initial document request", sub: "Priority items list" },
+          { label: "NDA confirmation", sub: "All parties signed" }
         ],
-        tags: ["Structure", "Entities", "Tax Residence"]
+        tags: ["Data Room", "VDR", "Document Review"]
       },
       {
-        name: "Historic Tax Returns",
-        title: "Review of Historic Tax Filings",
-        desc: "Analyze corporate income tax returns for the last 3–5 years to identify patterns, filing positions taken, loss carryforwards, and any deviations from GAAP or local tax rules.",
+        name: "Q&A Process (on-going)",
+        title: "Q&A Process — On-Going",
+        desc: "Continuous question and answer process throughout the due diligence. Questions are submitted to the sell-side via the VDR platform. Responses are tracked and followed up as needed until closing.",
         keys: [
-          { label: "CIT returns (3–5y)", sub: "Completeness & consistency" },
-          { label: "Loss carryforwards", sub: "Amount, expiry, usability" },
-          { label: "Filing positions", sub: "Aggressive or unusual items" },
-          { label: "Tax vs. GAAP diff.", sub: "Reconciliation items" }
+          { label: "Q&A submission", sub: "Via VDR platform" },
+          { label: "Response tracking", sub: "Open / answered / escalated" },
+          { label: "Follow-up questions", sub: "Based on responses" },
+          { label: "Expert call requests", sub: "Where written answers insufficient" }
         ],
-        tags: ["Compliance", "Historic", "Filings"]
+        tags: ["Q&A", "On-Going", "Sell-Side"]
       },
       {
-        name: "Transfer Pricing Review",
-        title: "Transfer Pricing Compliance",
-        desc: "Assess intercompany transactions and whether they are priced at arm's length. Review existing TP documentation, master file / local file status and any APAs or MAPs in place.",
+        name: "Expert Call with Sell-Side",
+        title: "Expert Call with Sell-Side Management",
+        desc: "Structured call or meeting with the target's tax management and / or external advisors to clarify complex findings, open questions and specific tax positions identified during the document review.",
         keys: [
-          { label: "IC transactions", sub: "Goods, services, IP, loans" },
-          { label: "TP documentation", sub: "Master file / local file" },
-          { label: "APA / MAP status", sub: "Advance agreements, disputes" },
-          { label: "Benchmark analysis", sub: "Arm's length ranges" }
+          { label: "Agenda preparation", sub: "Key open items list" },
+          { label: "Tax management call", sub: "CFO, Tax Director, advisors" },
+          { label: "Minutes & follow-up", sub: "Document responses" },
+          { label: "Outstanding items", sub: "Track unresolved questions" }
         ],
-        tags: ["Transfer Pricing", "BEPS", "Intercompany"]
+        tags: ["Expert Call", "Sell-Side", "Management"]
       }
     ]
   },
   {
-    num: "03", name: "Risk Identification",
+    num: "02", name: "Interim Reporting",
     steps: [
       {
-        name: "Open Tax Audits",
-        title: "Open Tax Audits & Disputes",
-        desc: "Identify all ongoing or recently completed tax audits, litigation and disputes. Assess potential financial exposure and likelihood of adverse outcome for each open matter.",
+        name: "Flash Update 1",
+        title: "Flash Update 1 — All Workstreams",
+        desc: "First interim update covering all workstreams. A concise 1-pager presentation summarizing the key DD findings identified so far. Presented to the deal team to flag early risks and guide further analysis.",
         keys: [
-          { label: "Audit inventory", sub: "Open & recent audits" },
-          { label: "Dispute exposure", sub: "Quantified risk per matter" },
-          { label: "Statute of limitations", sub: "Open years per jurisdiction" },
-          { label: "Provision adequacy", sub: "Vs. estimated exposure" }
+          { label: "1-pager format", sub: "Concise, deal-team focused" },
+          { label: "Key findings so far", sub: "Top risks per workstream" },
+          { label: "Open items", sub: "Outstanding data requests" },
+          { label: "Next steps", sub: "Focus areas going forward" }
         ],
-        tags: ["Audit", "Litigation", "Exposure"]
+        tags: ["Flash Update", "Interim", "All Workstreams"]
       },
       {
-        name: "Tax Contingencies",
-        title: "Tax Contingencies & Provisions",
-        desc: "Review tax accruals and contingent liabilities in the financial statements. Assess whether provisions are sufficient or whether additional exposure exists based on DD findings.",
+        name: "Flash Update 2",
+        title: "Flash Update 2 — Progress & Updated Findings",
+        desc: "Second interim update with updated findings following additional document review and the expert call. Refines the risk picture and provides an updated view on key tax exposures and open items.",
         keys: [
-          { label: "Balance sheet review", sub: "Tax payables & accruals" },
-          { label: "IAS 12 / ASC 740", sub: "Deferred tax positions" },
-          { label: "Unrecognized items", sub: "Off-balance exposures" },
-          { label: "Contingent liabilities", sub: "UTP, FIN 48 positions" }
+          { label: "Updated risk summary", sub: "Refined vs. Flash Update 1" },
+          { label: "New findings", sub: "From additional doc review" },
+          { label: "Post-expert call items", sub: "Clarifications received" },
+          { label: "Quantification update", sub: "Initial exposure estimates" }
         ],
-        tags: ["Contingencies", "IAS 12", "Financial Statements"]
+        tags: ["Flash Update", "Interim", "Risk Refinement"]
       },
       {
-        name: "Structural Tax Risks",
-        title: "Structural & Transactional Tax Risks",
-        desc: "Assess risks arising from the current group structure, past reorganizations, step-up elections and any tax-driven transactions that could be challenged post-closing.",
+        name: "Preliminary DD Executive Summary",
+        title: "Preliminary DD Executive Summary",
+        desc: "Preliminary executive summary including a Risk Summary Table covering all identified tax risks and their estimated financial exposure. Optionally followed by a third Flash Update depending on deal timeline.",
         keys: [
-          { label: "Past restructurings", sub: "Mergers, demergers, migrations" },
-          { label: "Step-up elections", sub: "Asset basis vs. book value" },
-          { label: "Anti-avoidance rules", sub: "GAAR, SAAR exposures" },
-          { label: "BEPS exposure", sub: "Pillar Two, CbCR compliance" }
+          { label: "Risk Summary Table", sub: "All risks, quantified" },
+          { label: "Executive summary", sub: "C-suite ready format" },
+          { label: "Flash Update 3 (optional)", sub: "If timeline requires" },
+          { label: "SPA input preview", sub: "Key items for contract" }
         ],
-        tags: ["Structure Risk", "Anti-Avoidance", "BEPS"]
+        tags: ["Preliminary Report", "Risk Summary", "Executive Summary"]
       }
     ]
   },
   {
-    num: "04", name: "Quantification",
+    num: "03", name: "Final DD & Contracts",
     steps: [
       {
-        name: "Exposure Modeling",
-        title: "Tax Exposure Modeling & Scenario Analysis",
-        desc: "Quantify identified tax risks using base, downside and upside scenarios. Model the financial impact on EBITDA, cash taxes and effective tax rate to support purchase price negotiations.",
+        name: "Draft Contracts Review",
+        title: "Draft Contracts Review (SPA / APA)",
+        desc: "Review of the draft Sale & Purchase Agreement (SPA) or Asset Purchase Agreement (APA) from a tax perspective. Identify missing or insufficient tax protections, indemnities and warranties and provide mark-up to the legal team.",
         keys: [
-          { label: "Base / downside / upside", sub: "Three-scenario approach" },
-          { label: "Cash tax impact", sub: "Expected payments & timing" },
-          { label: "ETR bridge", sub: "Effective tax rate analysis" },
-          { label: "P&L / balance sheet", sub: "Impact on financials" }
-        ],
-        tags: ["Modeling", "Scenarios", "Valuation"]
-      },
-      {
-        name: "Tax Attributes",
-        title: "Tax Attributes & Value Drivers",
-        desc: "Identify and quantify favorable tax attributes such as loss carryforwards, tax credits, step-ups and other deferred tax assets that may create value for the acquirer.",
-        keys: [
-          { label: "NOL carryforwards", sub: "Amount, expiry, usability" },
-          { label: "Tax credits", sub: "R&D, investment, other" },
-          { label: "Deferred tax assets", sub: "Recognition & recoverability" },
-          { label: "Step-up potential", sub: "Asset deal vs. share deal" }
-        ],
-        tags: ["Value Creation", "DTAs", "Tax Attributes"]
-      },
-      {
-        name: "W&I Insurability",
-        title: "W&I Insurance Scope",
-        desc: "Assess which tax risks may be insurable under a Warranty & Indemnity insurance policy and coordinate with the M&A team on coverage scope, exclusions and escrow requirements.",
-        keys: [
-          { label: "W&I scope", sub: "Coverable risks" },
-          { label: "Known exclusions", sub: "DD-identified carve-outs" },
-          { label: "Escrow sizing", sub: "Retention for uninsured risk" },
-          { label: "Insurer coordination", sub: "Underwriter Q&A process" }
-        ],
-        tags: ["W&I", "Insurance", "Risk Transfer"]
-      }
-    ]
-  },
-  {
-    num: "05", name: "Reporting",
-    steps: [
-      {
-        name: "Red Flag Report",
-        title: "Red Flag / Preliminary Report",
-        desc: "Issue a concise red flag report highlighting the most material findings early in the process to support deal team decision-making and to flag any potential deal-breakers.",
-        keys: [
-          { label: "Deal-breaker items", sub: "Critical blockers" },
-          { label: "Top 5 risks", sub: "Prioritized by exposure" },
-          { label: "Management action", sub: "Immediate decisions needed" },
-          { label: "Timeline implications", sub: "Impact on signing date" }
-        ],
-        tags: ["Report", "Early Alert", "Management"]
-      },
-      {
-        name: "Full DD Report",
-        title: "Full Tax Due Diligence Report",
-        desc: "Deliver a comprehensive written report covering all analyzed areas, quantified exposures, structural observations and recommendations for SPA protection mechanisms.",
-        keys: [
-          { label: "Structured findings", sub: "By area & jurisdiction" },
-          { label: "Quantified exposure", sub: "Best / worst / base case" },
-          { label: "SPA recommendations", sub: "Indemnities, warranties" },
-          { label: "Executive summary", sub: "C-suite ready overview" }
-        ],
-        tags: ["Full Report", "SPA Input", "Documentation"]
-      },
-      {
-        name: "SPA Support",
-        title: "SPA Tax Clauses & Negotiation Support",
-        desc: "Provide specific input on tax indemnities, warranties, tax covenant, locked-box adjustments and closing conditions. Support negotiations with target's advisors as needed.",
-        keys: [
-          { label: "Tax indemnity", sub: "Scope, cap, basket" },
+          { label: "SPA / APA tax review", sub: "Tax clause analysis" },
+          { label: "Tax indemnities", sub: "Scope, cap, basket, duration" },
           { label: "Tax warranties", sub: "Specific & general" },
-          { label: "Locked-box adj.", sub: "Tax leakage items" },
-          { label: "Closing conditions", sub: "Tax-related CPs" }
+          { label: "Locked-box adjustments", sub: "Tax leakage items" }
         ],
-        tags: ["SPA", "Negotiation", "Legal"]
+        tags: ["SPA", "APA", "Contracts", "Legal"]
+      },
+      {
+        name: "Final DD Executive Summary",
+        title: "Final DD Executive Summary & Full DD Report",
+        desc: "Delivery of the final due diligence executive summary and the full DD report including all advisor reports. Covers all tax areas analyzed, quantified exposures and final recommendations for deal structuring and SPA protection.",
+        keys: [
+          { label: "Full DD report", sub: "All workstreams, all jurisdictions" },
+          { label: "Advisor reports", sub: "External advisor deliverables" },
+          { label: "Final risk quantification", sub: "Best / base / worst case" },
+          { label: "Deal recommendations", sub: "Structure, price, protections" }
+        ],
+        tags: ["Final Report", "Full DD", "Advisor Reports"]
+      },
+      {
+        name: "DD Review — InvestCom / MBM",
+        title: "DD Review — Internal Presentation to InvestCom / MBM",
+        desc: "Internal meeting with the Investment Committee (InvestCom) or Management Board Meeting (MBM) to present the final DD findings, conclude on key risks and obtain approval to proceed to final bid.",
+        keys: [
+          { label: "InvestCom presentation", sub: "Final findings summary" },
+          { label: "Key risk conclusions", sub: "Go / no-go per risk item" },
+          { label: "Deal approval", sub: "Board sign-off to proceed" },
+          { label: "Bid instruction", sub: "Price & terms guidance" }
+        ],
+        tags: ["InvestCom", "MBM", "Governance", "Approval"]
+      }
+    ]
+  },
+  {
+    num: "04", name: "Signing & Closing",
+    steps: [
+      {
+        name: "Final Bid",
+        title: "Final Bid Submission",
+        desc: "Submission of the final binding bid based on the completed due diligence findings. Tax input on purchase price adjustments, tax indemnity provisions and final deal structure incorporated into the bid.",
+        keys: [
+          { label: "Binding offer", sub: "Price, structure, conditions" },
+          { label: "Tax price adjustments", sub: "DD-based deductions" },
+          { label: "Final SPA terms", sub: "Tax protections confirmed" },
+          { label: "W&I insurance", sub: "Coverage confirmed if applicable" }
+        ],
+        tags: ["Final Bid", "Binding Offer", "Pricing"]
+      },
+      {
+        name: "Signing of Contracts",
+        title: "Signing of Contracts",
+        desc: "Formal signing of the Sale & Purchase Agreement or Asset Purchase Agreement. Key milestone marking the legally binding commitment of both parties. All tax-related conditions precedent and closing accounts mechanisms confirmed.",
+        keys: [
+          { label: "SPA / APA signing", sub: "Legally binding commitment" },
+          { label: "Conditions precedent", sub: "Tax-related CPs confirmed" },
+          { label: "Closing accounts", sub: "Mechanism agreed" },
+          { label: "Antitrust filings", sub: "Legal — regulatory approvals" }
+        ],
+        tags: ["Signing", "SPA", "Milestone"]
+      },
+      {
+        name: "Closing & Integration",
+        title: "Closing, Post-Closing & Integration",
+        desc: "Closing of the deal including purchase price payment and settlement of any taxes due at closing (transfer taxes, stamp duties, etc.). Followed by closing account negotiations, price adjustments and the start of tax integration aligned with all relevant workstreams.",
+        keys: [
+          { label: "PP payment", sub: "Purchase price transfer" },
+          { label: "Transfer taxes / stamp duties", sub: "Taxes due at closing" },
+          { label: "Closing account negotiations", sub: "Price adjustments" },
+          { label: "Tax integration", sub: "Legal integration, workstream alignment" }
+        ],
+        tags: ["Closing", "Integration", "Post-Closing", "Transfer Taxes"]
       }
     ]
   }
